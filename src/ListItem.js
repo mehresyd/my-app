@@ -2,12 +2,12 @@ import React from "react";
 import "./ListItem.css"
 
 const ListItem = (props) => {
-    const {item} = props;
+    const {item, onDelete} = props;
 
     return(
         <li>
             <div>{item}</div>
-            <button>Delete</button>
+            <button onClick={onDelete}>Delete</button>
         </li>
     )
 }

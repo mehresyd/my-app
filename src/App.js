@@ -17,6 +17,13 @@ function App() {
     setUserEnteredTodo("");
   }
 
+  function deleteItem(index) {
+    const newList = [...listItems];
+    newList.splice(index, 1);
+    setListItems(newList);
+  }
+
+
   return (
     <div>
       <ul>
@@ -26,6 +33,7 @@ function App() {
             <ListItem 
               key={index}
               item={item}
+              onDelete={() => deleteItem(index)}
             />
             )
           })
