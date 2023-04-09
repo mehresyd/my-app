@@ -1,6 +1,10 @@
 import './App.css';
+import React from 'react';
 
 function App() {
+
+  const[listItems, setListItems] = React.useState([]);
+
   let todoListItems = [
     'Laundry',
     'Dishes',
@@ -16,7 +20,7 @@ function App() {
     <div>
       <ul>
         {
-          todoListItems.map((item, index) => {
+          listItems.map((item, index) => {
             return (<li key={index}>{item}</li>)
           })
         }
@@ -24,11 +28,9 @@ function App() {
 
        
       <input 
-       onMouseOver={(event) => {
-          console.log('moused over!')
-        }}
-      onChange={(event) => {
-        console.log(event.target.value)
+        onChange={(event) => {
+          setListItems([event.target.value])
+          console.log(event.target.value)
       }}
       />
     </div>
