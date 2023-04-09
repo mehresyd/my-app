@@ -3,10 +3,18 @@ import React from 'react';
 
 function App() {
 
-  const[userEnteredTodo, setUserEnteredTodo] = React.useState("");
-  const[listItems, setListItems] = React.useState([]);
+  const [userEnteredTodo, setUserEnteredTodo] = React.useState("");
+  const [listItems, setListItems] = React.useState([]);
 
-  console.log(userEnteredTodo)
+  const saveItemAndClearInput = () => {
+    setListItems([
+      ...listItems,
+      userEnteredTodo
+    ])
+
+    //add logic to clear input
+    setUserEnteredTodo("");
+  }
 
   return (
     <div>
@@ -18,24 +26,22 @@ function App() {
         }
       </ul>
 
-       
-      <input 
+
+      <input
         onChange={(event) => {
           setUserEnteredTodo(event.target.value)
-      }}
-      value={userEnteredTodo}
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            saveItemAndClearInput()
+          }
+        }}
+        value={userEnteredTodo}
       />
-      <button 
-      onClick={() => {
-        console.log('here')
-        setListItems([
-          ...listItems,
-          userEnteredTodo
-        ])
-
-        //add logic to clear input
-        setUserEnteredTodo("");
-      }}
+      <button
+        onClick={() => {
+          saveItemAndClearInput()
+        }}
       >Add</button>
     </div>
   );
