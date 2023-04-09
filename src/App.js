@@ -3,18 +3,10 @@ import React from 'react';
 
 function App() {
 
+  const[userEnteredTodo, setUserEnteredTodo] = React.useState();
   const[listItems, setListItems] = React.useState([]);
 
-  let todoListItems = [
-    'Laundry',
-    'Dishes',
-    'Sweep the floor',
-    'Feed my cats',
-    'Clean the shower',
-    'Random task A',
-    'Another task',
-    'Another task'
-  ];
+  console.log(userEnteredTodo)
 
   return (
     <div>
@@ -29,10 +21,19 @@ function App() {
        
       <input 
         onChange={(event) => {
-          setListItems([event.target.value])
+          setUserEnteredTodo(event.target.value)
           console.log(event.target.value)
       }}
       />
+      <button 
+      onClick={() => {
+        console.log('here')
+        setListItems([
+          ...listItems,
+          userEnteredTodo
+        ])
+      }}
+      >Add</button>
     </div>
   );
 }
