@@ -1,13 +1,35 @@
 import React from "react";
 import "./ListItem.css"
 
+
 const ListItem = (props) => {
     const {item, onDelete} = props;
+    const [showDeleteButton, setShowDeleteButton] = React.useState(false);
+
+    const handleMouseEnter = () => {
+       
+        setShowDeleteButton(true);
+    }
+
+    const handleMouseLeave = () => {
+      
+        setShowDeleteButton(false);
+    }
 
     return(
-        <li>
+        <li
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        >
             <div>{item}</div>
-            <button onClick={onDelete}>Delete</button>
+
+
+            {
+                showDeleteButton ? 
+                <button onClick={onDelete}>Delete</button>
+                :null
+            }
+
         </li>
     )
 }
