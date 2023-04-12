@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import ListItem from "./ListItem";
+import Input from "./Input";
 
 function App() {
 
@@ -40,17 +41,18 @@ function App() {
         }
       </ul>
 
-
-      <input
-        onChange={(event) => {
-          setUserEnteredTodo(event.target.value)
-        }}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            saveItemAndClearInput()
-          }
-        }}
-        value={userEnteredTodo}
+      <Input
+      id={'input-id'}
+      name={'user-entered-todo'}
+       onChange={(event) => {
+        setUserEnteredTodo(event.target.value)
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
+          saveItemAndClearInput()
+        }
+      }}
+      value={userEnteredTodo}
       />
       <button
         onClick={() => {
